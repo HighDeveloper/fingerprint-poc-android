@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FingerPrint-PoC</string>
+    <string name="title_activity_login">Inicio de sesión</string>
+    <string name="description">Por favor coloca tu huella en el lector para iniciar sesión.</string>
+    <string name="information">Con el lector de huellas dactilares puedes construir un mecanismo de autenticación de forma ágil, rápida y segura para tu aplicación.</string>
+    <string name="title_activity_main">Actividad principal</string>
+    <string name="welcome">Bienvenido a nuestra aplicación</string>
+</resources>
