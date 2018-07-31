@@ -42,27 +42,24 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        // Iniciando el Android Keyguard Manager y el Fingerprint Manager
+        // Keyguard Manager and Fingerprint Manager
         KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
         android.hardware.fingerprint.FingerprintManager fingerprintManager = (android.hardware.fingerprint.FingerprintManager)
                 getSystemService(FINGERPRINT_SERVICE);
 
-        // Verificando la existencia de un lector de huellas en el dispositivo
+        // Check the fingerprint sensor
         if (!fingerprintManager.isHardwareDetected()) {
 
-            Toast.makeText(this, "Su dispositivo no tiene un lector de huellas dactilares.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Fingerprint authentication is not supported", Toast.LENGTH_LONG).show();
         } else {
-            // Verificando que se haya pedido el permiso en el AndroidManifest
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Es necesario activar el permiso de FingerPrint.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "FingerPrint permission is not enabled.", Toast.LENGTH_SHORT).show();
             } else {
-                // Verificando que exista al menos una huella dactilar registrada en el dispositivo
                 if (!fingerprintManager.hasEnrolledFingerprints()) {
-                    Toast.makeText(this, "Se debe registrar al menos una huella en la configuración del dispositivo.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Fingerprint is not configured.", Toast.LENGTH_LONG).show();
                 } else {
-                    // Verificando que el lock screen security este activado
                     if (!keyguardManager.isKeyguardSecure()) {
-                        Toast.makeText(this, "Lock screen security no está activado en la configuración del dispositivo.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Lock screen security is not enabled in the device.", Toast.LENGTH_LONG).show();
                     } else {
                         generateKey();
                         if (cipherInit()) {

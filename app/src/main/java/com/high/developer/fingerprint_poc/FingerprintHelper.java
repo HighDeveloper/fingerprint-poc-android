@@ -23,25 +23,26 @@ public class FingerprintHelper extends android.hardware.fingerprint.FingerprintM
 
     @Override
     public void onAuthenticationError(int errMsgId, CharSequence errString) {
-        this.showInformationMessage("Error al autenticar:\n" + errString);
+        this.showInformationMessage("Auth error" + errString);
     }
+
 
 
     @Override
     public void onAuthenticationHelp(int helpMsgId, CharSequence helpString) {
-        this.showInformationMessage("Ayuda del Fingerprint:\n" + helpString);
+        this.showInformationMessage("Auth help\n"+ helpString);
     }
 
 
     @Override
     public void onAuthenticationFailed() {
-        this.showInformationMessage("Autenticación fallida.");
+        this.showInformationMessage("Auth failed.");
     }
 
 
     @Override
     public void onAuthenticationSucceeded(android.hardware.fingerprint.FingerprintManager.AuthenticationResult result) {
-        this.showInformationMessage("Autenticación exitosa.");
+        this.showInformationMessage("Auth succeeded.");
         mContext.startActivity(new Intent(mContext, MainActivity.class));
     }
 
