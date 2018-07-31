@@ -10,6 +10,8 @@ https://blog.highdeveloper.com/autenticacion-con-huella-en-android/ (Spanish ver
 Prerequisites:
 
 Device with fingerprint sensor
+
 Android Studio
+
 Android SDK API 27
 
